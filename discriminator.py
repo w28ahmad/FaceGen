@@ -13,7 +13,7 @@ class Discriminator:
     def createModel(self):
         self.discriminator = keras.Sequential(
             [
-                keras.Input(shape=(144, 144, 1)),
+                keras.Input(shape=(144, 144, 3)),
                 
                 keras.layers.Conv2D(filters=16, kernel_size=(3, 3), strides=(2, 2), padding='same'),
                 keras.layers.MaxPooling2D(pool_size=2),

@@ -31,7 +31,7 @@ class Generator:
                 keras.layers.Conv2DTranspose(self.latent_dim, (3, 3), strides=(2, 2), padding="same"),
                 keras.layers.LeakyReLU(alpha=0.3),
 
-                keras.layers.Conv2D(1, (9, 9), padding="same", activation="sigmoid")
+                keras.layers.Conv2D(3, (9, 9), padding="same", activation="sigmoid")
             ],
             name="generator",
         )
