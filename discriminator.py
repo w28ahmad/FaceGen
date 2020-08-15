@@ -2,7 +2,6 @@ from tensorflow import keras
 
 """
 Task: Distinguishing between samples from the model and samples from training data
-TODO: crop the image to be 176 by 176
 """
 class Discriminator:
     def __init__(self):
@@ -14,19 +13,36 @@ class Discriminator:
     def createModel(self):
         self.discriminator = keras.Sequential(
             [
-                keras.Input(shape=(176, 176, 1)),
+                keras.Input(shape=(144, 144, 1)),
+                
+                keras.layers.Conv2D(filters=16, kernel_size=(3, 3), strides=(2, 2), padding='same'),
+                keras.layers.MaxPooling2D(pool_size=2),
+                keras.layers.LeakyReLU(alpha=0.4),
+                
+                keras.layers.Conv2D(filters=32, kernel_size=(3, 3), strides=(2, 2), padding='same'),
+                keras.layers.MaxPooling2D(pool_size=2),
+                keras.layers.LeakyReLU(alpha=0.4),
                 
                 keras.layers.Conv2D(filters=64, kernel_size=(3, 3), strides=(2, 2), padding='same'),
-                keras.layers.LeakyReLU(alpha=0.1),
+                keras.layers.MaxPooling2D(pool_size=2),
+                keras.layers.LeakyReLU(alpha=0.4),
                 
-                keras.layers.Conv2D(filters=128, kernel_size=(3, 3), strides=(2, 2), padding='same'),
-                keras.layers.LeakyReLU(alpha=0.1),
+                # keras.layers.Conv2D(filters=128, kernel_size=(3, 3), strides=(2, 2), padding='same'),
+                # keras.layers.MaxPooling2D(pool_size=2),
+                # keras.layers.LeakyReLU(alpha=0.4),
                 
-                keras.layers.Conv2D(filters=256, kernel_size=(3, 3), strides=(2, 2), padding='same'),
-                keras.layers.LeakyReLU(alpha=0.1),
+                # keras.layers.Conv2D(filters=256, kernel_size=(3, 3), strides=(2, 2), padding='same'),
+                # keras.layers.MaxPooling2D(pool_size=2),
+                # keras.layers.LeakyReLU(alpha=0.4),
                 
-                keras.layers.GlobalMaxPool2D(),
-                keras.layers.Dense(1)
+                # keras.layers.GlobalMaxPool2D(),
+                keras.layers.MaxPooling2D(pool_size=2),
+                keras.layers.Flatten(),
+
+                keras.layers.Dense(256, activation='relu'),
+                keras.layers.Dropout(0.2),
+             
+                keras.layers.Dense(1),
             ],
             name="discriminator",
         )

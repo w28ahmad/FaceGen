@@ -14,24 +14,24 @@ class Generator:
         self.generator = keras.Sequential(
             [
                 keras.Input(shape=(self.latent_dim, )),
-                keras.layers.Dense(11 * 11 * self.latent_dim),
+                keras.layers.Dense(9 * 9 * self.latent_dim),
 
-                keras.layers.LeakyReLU(alpha=0.1),
-                keras.layers.Reshape(target_shape=(11, 11, self.latent_dim)),
+                keras.layers.LeakyReLU(alpha=0.3),
+                keras.layers.Reshape(target_shape=(9, 9, self.latent_dim)),
             
-                keras.layers.Conv2DTranspose(self.latent_dim, (4, 4), strides=(2, 2), padding="same"),
-                keras.layers.LeakyReLU(alpha=0.1),
+                keras.layers.Conv2DTranspose(self.latent_dim, (3, 3), strides=(2, 2), padding="same"),
+                keras.layers.LeakyReLU(alpha=0.3),
             
-                keras.layers.Conv2DTranspose(self.latent_dim, (4, 4), strides=(2, 2), padding="same"),
-                keras.layers.LeakyReLU(alpha=0.1),
+                keras.layers.Conv2DTranspose(self.latent_dim, (3, 3), strides=(2, 2), padding="same"),
+                keras.layers.LeakyReLU(alpha=0.3),
             
-                keras.layers.Conv2DTranspose(self.latent_dim, (4, 4), strides=(2, 2), padding="same"),
-                keras.layers.LeakyReLU(alpha=0.1),
+                keras.layers.Conv2DTranspose(self.latent_dim, (3, 3), strides=(2, 2), padding="same"),
+                keras.layers.LeakyReLU(alpha=0.3),
             
-                keras.layers.Conv2DTranspose(self.latent_dim, (4, 4), strides=(2, 2), padding="same"),
-                keras.layers.LeakyReLU(alpha=0.1),
+                keras.layers.Conv2DTranspose(self.latent_dim, (3, 3), strides=(2, 2), padding="same"),
+                keras.layers.LeakyReLU(alpha=0.3),
 
-                keras.layers.Conv2D(1, (11, 11), padding="same", activation="sigmoid")
+                keras.layers.Conv2D(1, (9, 9), padding="same", activation="sigmoid")
             ],
             name="generator",
         )
