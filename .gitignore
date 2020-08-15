@@ -1,3 +1,5 @@
 humans/
 __pycache__/
 .vscode/
+output/
+collageGen.py

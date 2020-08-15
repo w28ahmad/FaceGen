@@ -1,5 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras
+import os
 
 """ 
 Credit: https://keras.io/examples/generative/dcgan_overriding_train_step/
@@ -96,7 +97,7 @@ class GANMonitor(keras.callbacks.Callback):
             img = keras.preprocessing.image.array_to_img(generated_images[i])
             # print(img)
             # keras.preprocessing.image.save_img(os.join(os.getcwd(), "output", "generated_img_{i}_{epoch}.png".format(i, epoch)), img)
-            if epoch % 50 == 0:
+            if epoch % 15 == 0:
               print(epoch, " Ended. Generating {image} picture".format(image=self.num_images))
               filename = "generated_img_{i}_{epoch}.png".format(i=i, epoch=epoch)
               img.save(filename)
