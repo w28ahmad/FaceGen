@@ -22,7 +22,7 @@ matplotlib                3.2.1
     - The dataset goes in ./humans/img_align_celeba
     - Note that the data set is pretty big (5 million celeb images), I only used around 3000 to train the model
 
-## Greyscale Results
+## Grayscale Results
 <img src="./assets/grey_tile.jpg" alt="drawing" width=800px>
 
 ## Colored Results
